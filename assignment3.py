@@ -39,14 +39,14 @@ def find_most_popular_browser(log):
         ,'Internet Explorer': 0
     }
     for i in log:
-        if re.search('Gecko.*?Firefox', i[2]):
+        if re.search('Gecko.+Firefox', i[2]):
             browser_d['Firefox'] += 1
-        elif re.search('Chrome.*?Safari', i[2]):
+        elif re.search('Chrome.+Safari', i[2]):
             browser_d['Chrome'] += 1
-        elif re.search('AppleWebKit.*?Safari', i[2]):
+        elif re.search('AppleWebKit.+Safari', i[2]):
             browser_d['Safari'] += 1
         elif re.search('Windows NT', i[2], re.IGNORECASE) or \
-                re.search('MSIE.*?(Windows|Macintosh)', i[2]):
+                re.search('MSIE.+(Windows|Macintosh)', i[2]):
             browser_d['Internet Explorer'] += 1
 
     browser = max(browser_d, key=browser_d.get)
